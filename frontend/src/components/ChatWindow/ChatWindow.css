@@ -1,0 +1,235 @@
+/* ========== TỔNG QUAN ========== */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fffbea;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ========== HEADER (TRẢI NGANG TOÀN MÀN HÌNH) ========== */
+.chat-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: #fdf5e6;
+  text-align: center;
+  padding: 28px 0;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-weight: 600;
+  color: #222;
+  font-size: 1.8rem;
+}
+
+.chat-header .brand {
+  color: #ffb703;
+}
+
+/* ========== KHUNG CHÍNH (CARD CHAT TRẮNG RỘNG HƠN) ========== */
+.chat-body {
+  width: 90%;                /* ✅ tăng độ rộng: chiếm 90% màn hình */
+  margin: 40px auto;         /* căn giữa */
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 80px 40px;   /* tăng padding cho thoáng */
+  min-height: 75vh;
+}
+
+/* Tiêu đề */
+.chat-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.chat-title h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.chat-title p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Nút gợi ý */
+.suggestions {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.suggest-btn {
+  background-color: #ffcd42;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 28px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.suggest-btn:hover {
+  background-color: #ffc107;
+  transform: translateY(-1px);
+}
+
+/* ========== KHUNG TIN NHẮN ========== */
+.messages {
+  width: 100%;
+  flex: 1;
+  min-height: 300px;
+  max-height: 450px;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  scroll-behavior: smooth;
+}
+
+/* Giúp text dài không vỡ */
+.messages * {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Thanh cuộn */
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+.messages::-webkit-scrollbar-thumb {
+  background: #cfcfcf;
+  border-radius: 8px;
+}
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+/* Ô nhập */
+.input-row {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ========== FOOTER ========== */
+.chat-footer {
+  background-color: #111;
+  color: white;
+  padding: 25px 0;
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  align-items: flex-start;
+  padding: 0 60px;
+}
+
+.footer-left h4 {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.footer-left h4 span {
+  color: #ffb703;
+}
+
+.footer-left p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.footer-mid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-mid ul li {
+  margin: 6px 0;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+.footer-right h5 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.footer-right p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 3px 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .chat-body {
+    width: 95%;
+    padding: 40px 30px;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-body {
+    width: 95%;
+    margin: 20px auto;
+    padding: 30px 20px;
+  }
+  .suggestions {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.chat-message.bot.typing{
+  display:inline-flex;
+  gap:6px;
+  align-items:center;
+  width:fit-content;
+  background:#f1f1f1;
+  border:1px solid #e5e5e5;
+  padding:12px 16px;       /* để bubble đủ rộng nhìn thấy chấm */
+  border-radius:20px;
+}
+
+.chat-message.bot.typing .dot{
+  display:inline-block;    /* 🔥 quan trọng */
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#9aa0a6;
+  animation: blink 1.4s infinite both;
+}
+.chat-message.bot.typing .dot:nth-child(2){ animation-delay:.2s; }
+.chat-message.bot.typing .dot:nth-child(3){ animation-delay:.4s; }
+
+@keyframes blink{
+  0%,80%,100%{ opacity:.2; transform:translateY(0) }
+  40%        { opacity:1;  transform:translateY(-2px) }
+}

@@ -1,0 +1,10 @@
+/* Chiếm toàn bộ màn hình */
+.home-container {
+  display: flex;
+  justify-content: center;   /* Căn giữa theo ngang */
+  align-items: center;       /* Căn giữa theo dọc */
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f2f5;
+  font-family: Arial, sans-serif;
+}
