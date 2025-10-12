@@ -84,7 +84,7 @@ function ChatWindow() {
           <button onClick={handleNewSession}>Phiên mới</button> */}
         </div>
       </div>
-
+{/* 
       <footer className="chat-footer">
         <div className="footer-inner">
           <div className="footer-left">
@@ -106,7 +106,7 @@ function ChatWindow() {
             <p>Nguyễn Diệu Linh</p>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

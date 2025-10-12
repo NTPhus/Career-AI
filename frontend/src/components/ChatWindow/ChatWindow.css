@@ -2,9 +2,10 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #fffbea;
   font-family: "Poppins", sans-serif;
+  overflow: hidden; 
 }
 
 /* ========== HEADER (TRẢI NGANG TOÀN MÀN HÌNH) ========== */
@@ -97,7 +98,14 @@
   overflow-y: auto;
   padding-right: 10px;
   margin-bottom: 20px;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
+
+  /* chặn các hành vi auto-anchoring gây “nhảy” cuộn */
+  overscroll-behavior: contain;
+  overflow-anchor: none;
+
+  /* tránh hiệu ứng mượt gây “kẹt” vị trí khi liên tục thêm tin */
+  scroll-behavior: auto;   /* thay vì smooth */
 }
 
 /* Giúp text dài không vỡ */
