@@ -34,7 +34,7 @@ def predict_top5(model, label_encoder, X_test, top_n=5):
         top_indices = np.unique(top_indices)[:top_n]
 
         # map về nhãn gốc
-        top_labels = label_encoder.inverse_transform(classes[top_indices])
+        top_labels = label_encoder['Ngành học'].inverse_transform(classes[top_indices])
         top5_list.append(top_labels.tolist())
     return top5_list
 

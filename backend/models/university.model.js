@@ -48,4 +48,4 @@ universitySchema.index({ id: 1 }, { unique: true });
 universitySchema.index({ "majors.code": 1 });
 universitySchema.index({ "majors.combinations": 1 }); // tìm theo mã tổ hợp nhanh hơn
 
-export default mongoose.model("university", universitySchema);
+export default mongoose.model("university", universitySchema, "university");
