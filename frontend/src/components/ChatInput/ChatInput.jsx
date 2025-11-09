@@ -13,7 +13,7 @@ function ChatInput({ onSend }) {
 
   return (
     <div className="chat-input">
-      <input Q
+      <input 
         value={message} 
         onChange={e => setMessage(e.target.value)} 
         placeholder="Type a message..." 
