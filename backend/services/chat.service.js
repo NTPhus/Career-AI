@@ -51,3 +51,49 @@ export const getGeminiResponse = async (message, history = []) => {
 
   return text;
 };
+
+export const getGeminiResponseDesc = async (major) => {
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+  // 🧩 System prompt được nhét vào user để tránh lỗi "invalid role"
+  const systemPrompt = {
+    role: "user",
+    parts: [
+      {
+        text: `
+[INSTRUCTIONS FOR AI – DO NOT ANSWER THIS PART DIRECTLY]
+
+Bạn là trợ lý ảo CareerBot của nền tảng Career AI.
+
+Nhiệm vụ:
+- Tư vấn, mô tả nghề nghiệp và định hướng ngành học.
+- Trả lời bằng tiếng Việt, giọng văn thân thiện – dễ hiểu.
+- Trả lời ngắn gọi gói gọn trong đoạn văn.
+- Khi người dùng đưa tên một ngành/nghề, hãy mô tả:
+  1. Ngành/Nghề đó là gì?
+  2. Kỹ năng cần có.
+  3. Lý do nên chọn ngành.
+  4. Các trường đại học tại Việt Nam phù hợp.
+
+Nếu câu hỏi không liên quan nghề nghiệp → trả lời ngắn gọn và lịch sự.
+
+--- END OF SYSTEM INSTRUCTIONS ---
+        `,
+      },
+    ],
+  };
+
+  // 🧩 Tin nhắn người dùng thật
+  const userPrompt = {
+    role: "user",
+    parts: [{ text: `Hãy mô tả ngành sau: ${major}` }],
+  };
+
+  const result = await model.generateContent({
+    contents: [systemPrompt, userPrompt],
+  });
+
+  return result.response.text();
+};
+
