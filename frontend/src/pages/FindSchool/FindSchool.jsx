@@ -1,6 +1,7 @@
 import { Row, Col, Button, Input, Form, Select  } from 'antd'
 import "./FindSchool.css"
 import FormItem from 'antd/es/form/FormItem'
+import ResultSchool from './ResultSchool'
 const FindSchool = () => {
   return (
     <>
@@ -60,14 +61,22 @@ const FindSchool = () => {
               </Col>
             </Row>
             <FormItem  >
-              <p style={{ font: "small-caption" }}>Lưu ý: Dữ liệu về điểm chuẩn theo các phương thức xét tuyển của các trường đại học là mới nhất - Năm 2025</p>
+              <p style={{ font: "small-caption" }}>
+                <span style={{color:"red"}}>** </span>
+                Lưu ý: Dữ liệu về điểm chuẩn theo các phương thức xét tuyển của các trường đại học là mới nhất - Năm 2025
+                </p>
             </FormItem>
 
             <FormItem>
-              <Button>Tìm trường</Button>
+              <button className='btn_timTruong'>Tìm trường</button>
             </FormItem>
           </Form>
         </Col>
+      </Row>
+
+      {/* Trả bảngg kết quả */}
+      <Row>
+        <ResultSchool/>
       </Row>
 
     </>

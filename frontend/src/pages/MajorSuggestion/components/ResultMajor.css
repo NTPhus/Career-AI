@@ -1,0 +1,29 @@
+.result__major--item{
+    width: 500px;
+    background-color: #111827;
+    color: #ffff;
+}
+.result__major--item .ant-card-head-title {
+  color: #EAB308;       /* màu chữ */
+  font-weight: 600;     /* đậm hơn */
+  font-size: 18px;      /* to hơn nếu muốn */
+    border-bottom: none !important;
+}
+
+
+
+.btn__major{
+    background: #FFCC02;
+}
+.ant-modal-close-x {
+    padding: 10px 15px;
+    background: #EAB308;
+border-radius: 5px;
+  font-size: 20px;          
+  transition: color 0.3s ease;
+}
+
+/* Khi hover */
+.ant-modal-close-x:hover {
+  color: #fff !important;      /* đổi sang trắng khi hover */
+}
