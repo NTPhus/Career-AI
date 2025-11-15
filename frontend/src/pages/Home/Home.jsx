@@ -1,7 +1,7 @@
 import { Row, Col, Button } from 'antd'
 import "./Home.css"
 import { ArrowRightOutlined } from '@ant-design/icons';
-
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
@@ -17,13 +17,19 @@ const Home = () => {
 
           <div className='btn'>
             <Row span={8}>
-              <button className='btn_khampha'>Khám phá ngành ngay
-                <ArrowRightOutlined style={{ marginLeft: "20px" }} />
-              </button>
+              <Link to="/major-suggestion">
+                <button className='btn_khampha'>Khám phá ngành ngay
+                  <ArrowRightOutlined style={{ marginLeft: "20px" }} />
+                </button></Link>
+
             </Row>
+
             <Row span={8}>
-              <button className='btn_ai'>Tư vấn AI
-              </button>
+              <Link to="/chatAI">
+                <button className='btn_ai'>
+                  Tư vấn AI
+                </button></Link>
+
             </Row>
           </div>
         </div>
