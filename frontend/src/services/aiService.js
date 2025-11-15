@@ -29,6 +29,14 @@ export async function sendToAI(text) {
   return reply;
 }
 
+export async function getDescFromAI(major) {
+  console.log("Major gửi lên API:", major);
+
+  const res = await api.post("/chat/desc", { major });
+
+  return res.data; // chỉ trả data để dễ dùng trong frontend
+}
+
 export function resetSession() {
   localStorage.removeItem(SESSION_KEY);
 }

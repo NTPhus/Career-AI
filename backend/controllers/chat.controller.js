@@ -1,4 +1,4 @@
-import { getGeminiResponse } from "../services/chat.service.js";
+import { getGeminiResponse, getGeminiResponseDesc } from "../services/chat.service.js";
 import { randomUUID } from "crypto";
 
 const chatSessions = new Map();
@@ -18,6 +18,7 @@ export const chat = async (req, res) => {
   try {
     // Giả sử hàm streamGeminiResponse có thể tách phần xử lý trả text ra
     const reply = await getGeminiResponse(message, history);
+    let {sessionId} = req.body;
 
     // Cập nhật history
     const updatedHistory = [
@@ -29,6 +30,27 @@ export const chat = async (req, res) => {
 
     // Trả về response thông thường
     res.json({sessionId, reply: reply });
+  } catch (err) {
+    console.error("Gemini error:", err);
+    res.status(500).json({ error: "Lỗi khi gọi Gemini API" });
+  }
+};
+
+export const desc = async (req, res) => {
+  console.log(req.body);
+  const { major } = req.body;  // lấy từ client
+
+  if (!major) {
+    return res.status(400).json({ error: "Missing major field" });
+  }
+
+  try {
+    const reply = await getGeminiResponseDesc(major);
+
+    res.json({
+      major,
+      reply, // trả mô tả ngành
+    });
   } catch (err) {
     console.error("Gemini error:", err);
     res.status(500).json({ error: "Lỗi khi gọi Gemini API" });
