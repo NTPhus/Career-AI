@@ -1,0 +1,76 @@
+.layoutStyle {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.headerStyle {
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  padding-inline: 48px;
+  background-color: #FEFCEC;
+  height: auto;
+  /* line-height: 80px; */
+}
+
+/* Thanh navigate */
+.Navigate{
+  display: flex;
+  align-items: center; /* Căn giữa chữ theo chiều dọc */
+  justify-content: space-between;
+}
+
+/* logo */
+.header_logo{
+  font-size: 18px;
+}
+.header{
+  display: flex;
+  align-items: center;
+}
+
+.Navigate a{
+  color: black;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* footer */
+.footer{
+  background: #111827;
+  height: 280px;
+}
+
+.footer_logo{
+  font-size: 30px;
+
+}
+.footer_logo--content{
+  color: #fff;
+  line-height: 1.6;
+  font-weight: 400;
+  
+}
+
+.list__content{
+  color: #fff;
+  margin-top: 70px;
+  
+}
+ul li::marker {
+  color: #F6B21A; 
+  font-size: 1.2em; 
+
+}
+
+.list__product{
+  margin-top: 50px;
+  color: #fff;
+
+}
+
+.copyright{
+  margin-top: 30px;
+  
+}
+
+

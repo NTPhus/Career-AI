@@ -3,9 +3,13 @@ import './ChatMessage.css';
 
 function ChatMessage({ message, isUser }) {
   return (
-    <div className={`chat-message ${isUser ? 'user' : 'bot'}`}>
-      {message}
-    </div>
+    <>
+      {message && <div className={`chat-message ${isUser ? 'user' : 'bot'}`}>
+        {message}
+      </div>
+      }
+    </>
+
   );
 }
 

@@ -2,7 +2,7 @@
 .messages {
   display: flex;
   flex-direction: column;
-  gap: 10px;              /* khoảng cách giữa các tin */
+  gap: 10px;            
   overflow-y: auto;
   padding: 10px;
 }
@@ -33,3 +33,11 @@
   align-self: flex-start; /* 🔥 canh trái */
   border-bottom-left-radius: 4px;
 }
+
+.no-message {
+  color: #aaa;
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+}
+
