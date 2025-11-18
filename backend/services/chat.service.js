@@ -75,6 +75,7 @@ Nhiệm vụ:
   2. Kỹ năng cần có.
   3. Lý do nên chọn ngành.
   4. Các trường đại học tại Việt Nam phù hợp.
+  5. Chỉ gửi văn bản thuần không phải dạng markdown.
 
 Nếu câu hỏi không liên quan nghề nghiệp → trả lời ngắn gọn và lịch sự.
 
