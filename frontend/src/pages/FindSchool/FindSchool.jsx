@@ -2,6 +2,9 @@ import { Row, Col, Button, Input, Form, Select  } from 'antd'
 import "./FindSchool.css"
 import FormItem from 'antd/es/form/FormItem'
 import ResultSchool from './ResultSchool'
+
+
+
 const FindSchool = () => {
   return (
     <>

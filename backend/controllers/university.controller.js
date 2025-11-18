@@ -16,6 +16,5 @@ export const searchUniversity = async (req, res) => {
         res.json(resultSearch);
     }else{
         res.json({"Error":"Name is null"});
-    }
-    
+    } 
 }

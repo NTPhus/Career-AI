@@ -1,7 +1,9 @@
 .result__major--item{
-    width: 500px;
+    width: 450px;
     background-color: #111827;
     color: #ffff;
+    margin-left: 10px;
+    
 }
 .result__major--item .ant-card-head-title {
   color: #EAB308;       /* màu chữ */
