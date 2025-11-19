@@ -3,6 +3,6 @@ import { getListUniversity, searchUniversity } from "../controllers/university.c
 
 const router = express.Router();
 router.get("/", getListUniversity);
-router.get("/search", searchUniversity);
+router.post("/search", searchUniversity);
 
 export default router;

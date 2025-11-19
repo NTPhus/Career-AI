@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Card, Modal } from "antd";
 import "./ResultMajor.css";
 import { getDescFromAI } from "../../../services/aiService";
+import { searchMajor } from "../../../services/majorService";
+import { getEmbedUrl } from "../../../utils/embedLink";
 const ResultMajor = (prop) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [desc, setDesc] = useState("Loading...");
+  const [major, setMajor] = useState([]);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -20,6 +23,16 @@ const ResultMajor = (prop) => {
     };
 
     fetchDesc();
+  }, []);
+
+  useEffect(() => {
+    const findMajor = async () => {
+      const res = await searchMajor(prop);
+      console.log("API response:", res);
+      setMajor(res);
+    };
+
+    findMajor();
   }, []);
 
   return (
@@ -48,16 +61,30 @@ const ResultMajor = (prop) => {
         }}
       >
         <h2 style={{ marginTop: -5, color: "#EAB308" }}>{prop.prop.major}</h2>
-        {/* <iframe
-          width="100%"
-          height="300"
-          src="https://www.youtube.com/embed/kR_5N66-Dm4"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe> */}
-        <h4>Lý do chọn ngành...</h4>
+        {major.length > 0 ? <>
+          <iframe
+            width="100%"
+            height="300"
+            src={getEmbedUrl(major[0].video_links)}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </>: <></>}
+       
+        <h4>
+          {major.length > 0 ? (
+            <>
+              <p>Các ngành tiêu biểu</p>
+              {major.map((item) => (
+                <p> - {item.name}</p>
+              ))}
+            </>
+          ) : (
+            ""
+          )}
+        </h4>
         {desc || <p>"Loading...."</p>}
       </Modal>
     </>

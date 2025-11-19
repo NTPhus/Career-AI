@@ -1,5 +1,5 @@
 // ChatWindow.jsx
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ChatInput from "../ChatInput/ChatInput";
 import ChatMessage from "../ChatMessage/ChatMessage";
 import "./ChatWindow.css";
@@ -13,12 +13,17 @@ function ChatWindow() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const endRef = useRef(null); // chỉ dùng 1 ref để scroll
+  const messageContainerRef = useRef(null);
+  const endRef = useRef(null); 
 
   // Auto scroll mỗi khi có tin mới hoặc trạng thái typing thay đổi
-  // useEffect(() => {
-  //   endRef.current?.scrollIntoView({ behavior: "smooth" });
-  // }, [messages, loading]);
+  useEffect(() => {
+    if (messageContainerRef.current) {
+        const container = messageContainerRef.current;
+        // Đặt scrollTop bằng chiều cao cuộn hiện tại để cuộn xuống dưới cùng
+        container.scrollTop = container.scrollHeight;
+    }
+  }, [messages, loading]);
 
   const handleSend = async (text) => {
     const clean = (text || "").trim();
@@ -72,7 +77,7 @@ function ChatWindow() {
         {/* ... phần title/suggestions của bạn ... */}
 
         {/* ✅ TypingBubble phải nằm TRONG .messages */}
-        <div className="messages">
+        <div className="messages" ref={messageContainerRef}>
           {Array.isArray(messages) && messages.length > 0 ? (
             <>
               {messages.map((m) => (

@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
-import './ChatInput.css';
+import React, { use, useEffect, useState } from "react";
+import "./ChatInput.css";
+import { useSearchParams } from "react-router-dom";
 
 function ChatInput({ onSend }) {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
+  const [searchParams] = useSearchParams();
+  const key = searchParams.get("key");
+  const majorName = searchParams.get("majorName");
+
+  useEffect(() => {
+    if (key) {
+      const university = key.slice(0, -2);
+      const prompt =
+        "Hãy cho tôi biết thông tin về ngành " +
+        majorName +
+        " tại " +
+        university;
+      onSend(prompt);
+    }
+  }, key);
 
   const handleSend = () => {
-    if(message.trim()) {
+    if (message.trim()) {
       onSend(message);
-      setMessage('');
+      setMessage("");
     }
-  }
+  };
 
   return (
     <div className="chat-input">
-      <input 
-        value={message} 
-        onChange={e => setMessage(e.target.value)} 
-        placeholder="Type a message..." 
-         onKeyDown={(e) => {
-        if (e.key === "Enter"){
-          handleSend();
-        }
-            
+      <input
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Type a message..."
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSend();
+          }
         }}
       />
-      <button onClick={handleSend} >Send</button>
+      <button onClick={handleSend}>Send</button>
     </div>
   );
 }

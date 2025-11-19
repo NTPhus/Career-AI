@@ -6,6 +6,7 @@ const majorSchema = new mongoose.Schema({
   desc: String,
   video_links: String,
   num_school: Number,
+  key: String
 });
 
 const major = mongoose.model("major", majorSchema, "major");

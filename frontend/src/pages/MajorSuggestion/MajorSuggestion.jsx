@@ -3,7 +3,7 @@ import "./MajorSuggestion.css";
 import ResultMajor from "./components/ResultMajor";
 import { useEffect, useState, useMemo } from "react";
 import { getQuestion } from "../../services/questionServer";
-import { predictMajor } from "../../services/predictMajor";
+import { predictMajor } from "../../services/majorService";
 
 const MajorSuggestion = () => {
   const [questions, setQuestions] = useState([]);
@@ -65,10 +65,10 @@ const MajorSuggestion = () => {
     const total = questions.length;
     const answered = Object.keys(selectedAnswers).length;
 
-    // if (answered < total) {
-    //   alert(`Bạn còn ${total - answered} câu chưa trả lời!`);
-    //   return;
-    // }
+    if (answered < total) {
+      alert(`Bạn còn ${total - answered} câu chưa trả lời!`);
+      return;
+    }
 
     const labelToValueRIASEC = {
       "Hoàn toàn không đồng ý": 1,
@@ -101,76 +101,12 @@ const MajorSuggestion = () => {
         : labelToValueRIASEC[selectedAnswers[q.id]],
     }));
 
-    // console.log(result);
     const mapped = {};
     result.forEach((item) => {
       mapped[item.question] = item.answer;
     });
-    console.log(mapped);
 
-    const test = {
-    "R1": 3,
-    "R2": 2,
-    "R3": 2,
-    "R4": 3,
-    "R5": 3,
-    "R6": 2,
-    "R7": 3,
-    "R8": 2,
-    "I1": 3,
-    "I2": 2,
-    "I3": 2,
-    "I4": 3,
-    "I5": 2,
-    "I6": 2,
-    "I7": 2,
-    "I8": 2,
-    "A1": 2,
-    "A2": 2,
-    "A3": 3,
-    "A4": 2,
-    "A5": 2,
-    "A6": 2,
-    "A7": 2,
-    "A8": 2,
-    "S1": 4,
-    "S2": 5,
-    "S3": 5,
-    "S4": 5,
-    "S5": 5,
-    "S6": 5,
-    "S7": 5,
-    "S8": 5,
-    "E1": 4,
-    "E2": 5,
-    "E3": 5,
-    "E4": 2,
-    "E5": 5,
-    "E6": 5,
-    "E7": 5,
-    "E8": 3,
-    "C1": 3,
-    "C2": 4,
-    "C3": 5,
-    "C4": 5,
-    "C5": 3,
-    "C6": 3,
-    "C7": 5,
-    "C8": 3,
-    "TIPI1": 6,
-    "TIPI2": 4,
-    "TIPI3": 7,
-    "TIPI4": 7,
-    "TIPI5": 6,
-    "TIPI6": 6,
-    "TIPI7": 6,
-    "TIPI8": 5,
-    "TIPI9": 5,
-    "TIPI10": 4,
-    "urban": 3,
-    "gender": 2
-}
-    const res = await predictMajor(test);
+    const res = await predictMajor(mapped);
     setMajors(res);
     console.log(majors);
     console.log(res);
@@ -279,11 +215,6 @@ const MajorSuggestion = () => {
               </Col>
             ))
           ) : (
-            // <Row gutter={[16, 16]} justify="center">
-            //   <Col xs={24} sm={12} md={8} lg={6}>
-            //     <ResultMajor/>
-            //   </Col>
-            // </Row>
             <p>Xem thêm</p>
           )}
         </Row>

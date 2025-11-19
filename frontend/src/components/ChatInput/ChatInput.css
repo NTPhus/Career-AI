@@ -11,6 +11,10 @@
   border-radius: 20px;
   border: 1px solid #ddd;
   outline: none;
+  background-color: white;
+  color: black;
+  height: 30px;
+  font-size: large;
 }
 
 .chat-input button {
