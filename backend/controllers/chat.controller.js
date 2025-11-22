@@ -38,14 +38,14 @@ export const chat = async (req, res) => {
 
 export const desc = async (req, res) => {
   console.log(req.body);
-  const { major } = req.body;  // lấy từ client
+  const { major, character } = req.body;  // lấy từ client
 
   if (!major) {
     return res.status(400).json({ error: "Missing major field" });
   }
 
   try {
-    const reply = await getGeminiResponseDesc(major);
+    const reply = await getGeminiResponseDesc(major, character);
 
     res.json({
       major,

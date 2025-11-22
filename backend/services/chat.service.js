@@ -52,7 +52,7 @@ export const getGeminiResponse = async (message, history = []) => {
   return text;
 };
 
-export const getGeminiResponseDesc = async (major) => {
+export const getGeminiResponseDesc = async (major, character) => {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
@@ -88,7 +88,7 @@ Nếu câu hỏi không liên quan nghề nghiệp → trả lời ngắn gọn 
   // 🧩 Tin nhắn người dùng thật
   const userPrompt = {
     role: "user",
-    parts: [{ text: `Hãy mô tả ngành sau: ${major}` }],
+    parts: [{ text: `Hãy mô tả ngành sau: ${major} cùng với tính cách đặc trưng của RIASEC như sau: ${character}` }],
   };
 
   const result = await model.generateContent({

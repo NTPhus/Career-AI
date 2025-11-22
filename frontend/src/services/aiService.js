@@ -29,10 +29,10 @@ export async function sendToAI(text) {
   return reply;
 }
 
-export async function getDescFromAI(major) {
+export async function getDescFromAI(major, character) {
   console.log("Major gửi lên API:", major);
 
-  const res = await api.post("/chat/desc", { major });
+  const res = await api.post("/chat/desc", { major, character});
 
   return res.data; // chỉ trả data để dễ dùng trong frontend
 }

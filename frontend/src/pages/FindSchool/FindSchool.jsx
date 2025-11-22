@@ -37,7 +37,7 @@ const FindSchool = () => {
 
   const onFinish = async (values) => {
     const res = await findUniversity(values);
-    setUniversites(res)
+    setUniversites(res);
   };
   return (
     <>
@@ -162,7 +162,15 @@ const FindSchool = () => {
 
       {/* Trả bảngg kết quả */}
       <Row>
-        <ResultSchool prop={universities}/>
+        {universities.length > 0 ? (
+          <>
+            <ResultSchool prop={universities} />
+          </>
+        ) : (
+          <>
+            <p>Không tìm thấy trường phù hợp</p>
+          </>
+        )}
       </Row>
     </>
   );

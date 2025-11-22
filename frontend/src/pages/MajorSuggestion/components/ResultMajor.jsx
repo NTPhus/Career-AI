@@ -4,7 +4,7 @@ import "./ResultMajor.css";
 import { getDescFromAI } from "../../../services/aiService";
 import { searchMajor } from "../../../services/majorService";
 import { getEmbedUrl } from "../../../utils/embedLink";
-const ResultMajor = (prop) => {
+const ResultMajor = ({prop, character}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [desc, setDesc] = useState("Loading...");
   const [major, setMajor] = useState([]);
@@ -17,9 +17,9 @@ const ResultMajor = (prop) => {
 
   useEffect(() => {
     const fetchDesc = async () => {
-      const res = await getDescFromAI(prop.prop.major);
+      const res = await getDescFromAI(prop.major, character);
       setDesc(res.reply);
-      console.log("API response:", res);
+      // console.log("API response:", res);
     };
 
     fetchDesc();
@@ -28,7 +28,7 @@ const ResultMajor = (prop) => {
   useEffect(() => {
     const findMajor = async () => {
       const res = await searchMajor(prop);
-      console.log("API response:", res);
+      // console.log("API response:", res);
       setMajor(res);
     };
 
@@ -39,10 +39,10 @@ const ResultMajor = (prop) => {
     <>
       <Card
         className="result__major--item"
-        title={prop.prop.major}
+        title={prop.major}
         variant="borderless"
       >
-        <p style={{ marginTop: -5 }}>Nhóm ngành: {prop.prop.field}</p>
+        <p style={{ marginTop: -5 }}>Nhóm ngành: {prop.field}</p>
         <button className="btn__major" onClick={showModal}>
           Xem thêm
         </button>
@@ -60,7 +60,7 @@ const ResultMajor = (prop) => {
           footer: { backgroundColor: "#1E1E1E", borderTop: "none" },
         }}
       >
-        <h2 style={{ marginTop: -5, color: "#EAB308" }}>{prop.prop.major}</h2>
+        <h2 style={{ marginTop: -5, color: "#EAB308" }}>{prop.major}</h2>
         {major.length > 0 ? <>
           <iframe
             width="100%"
