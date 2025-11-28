@@ -1,0 +1,55 @@
+.find__school{
+    height: 600px;
+    background-image: url('../../img/tim_truong.jpg');
+  background-repeat: no-repeat;
+  object-fit: cover;
+
+}
+
+.find__school .form_item_school{
+    margin-left: 15px;
+}
+
+.text_find_school{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.btn_timTruong{
+    background: yellow;
+}
+.btn_timTruong {
+  /* phải có block để margin auto hoạt động */
+  display: block; 
+  width: 500px;
+  margin: 15px auto; /* căn giữa theo chiều ngang */
+  background: linear-gradient(90deg, #FFEF78 0%, #FFCC02 100%);
+  border: none;
+  color: #ffff;                /* chữ màu xám đậm dễ đọc */
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 204, 2, 0.3);
+   outline: none; 
+}
+
+.btn_timTruong:focus {
+  outline: none; 
+}
+
+.btn_timTruong:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(255, 204, 2, 0.5);
+  /* background: #FFCC02; */
+  border: 1px solid #dddd;
+}
+
+.btn_timTruong:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 8px rgba(255, 204, 2, 0.4);
+}
