@@ -15,8 +15,12 @@ const FindSchool = () => {
 
   const [searchParams] = useSearchParams();
   let majorName = searchParams.get("majorName");
-  majorName = majorName.split(",");
-  if (majorName[majorName.length - 1] === "") majorName.pop();
+  if (majorName) {
+    majorName = majorName.split(",");
+    if (majorName[majorName.length - 1] === "") majorName.pop();
+  }else{
+    majorName = null
+  }
 
   useEffect(() => {
     const fetchLocation = async () => {
@@ -50,10 +54,10 @@ const FindSchool = () => {
   };
 
   useEffect(() => {
-    const fetchUniversities= async () => {
+    const fetchUniversities = async () => {
       let majorQuery = {
-        'tenNganh': majorName
-      }
+        tenNganh: majorName,
+      };
       console.log(majorQuery);
       const res = await findUniversity(majorQuery);
       setUniversites(res);
@@ -94,7 +98,7 @@ const FindSchool = () => {
               borderRadius: 15,
             }}
             initialValues={{
-                tenNganh: majorName,
+              tenNganh: majorName,
             }}
           >
             <Row className="form_item_school" gutter={16}>
