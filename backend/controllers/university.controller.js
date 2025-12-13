@@ -71,7 +71,7 @@ export const searchUniversity = async (req, res) => {
     }
 
     const resultSearch = await university.find(query).select(projection).exec();
-
+  console.log(resultSearch); 
     res.status(200).json(resultSearch);
   } catch (error) {
     console.error("Lỗi trong quá trình tìm kiếm:", error);

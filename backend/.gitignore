@@ -18,10 +18,10 @@ rf_env
 # Hardhat Ignition default folder for deployments against a local node
 ignition/deployments/chain-31337
 
-*.pkl
-*.ipynb
-*.png
-*.jpg
-*.jpeg
-child_models_tuned/
-rf_resources/
+# *.pkl
+# *.ipynb
+# *.png
+# *.jpg
+# *.jpeg
+# child_models_tuned/
+# rf_resources/

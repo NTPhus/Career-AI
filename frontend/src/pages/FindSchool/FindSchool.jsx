@@ -18,8 +18,8 @@ const FindSchool = () => {
   if (majorName) {
     majorName = majorName.split(",");
     if (majorName[majorName.length - 1] === "") majorName.pop();
-  }else{
-    majorName = null
+  } else {
+    majorName = null;
   }
 
   useEffect(() => {
@@ -53,18 +53,20 @@ const FindSchool = () => {
     setCheck(true);
   };
 
-  useEffect(() => {
-    const fetchUniversities = async () => {
-      let majorQuery = {
-        tenNganh: majorName,
+  if (majorName) {
+    useEffect(() => {
+      const fetchUniversities = async () => {
+        let majorQuery = {
+          tenNganh: majorName,
+        };
+        console.log(majorQuery);
+        const res = await findUniversity(majorQuery);
+        setUniversites(res);
+        setCheck(true);
       };
-      console.log(majorQuery);
-      const res = await findUniversity(majorQuery);
-      setUniversites(res);
-      setCheck(true);
-    };
-    fetchUniversities();
-  }, majorName);
+      fetchUniversities();
+    }, majorName);
+  }
 
   return (
     <>
