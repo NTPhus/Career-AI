@@ -66,8 +66,8 @@ const MajorSuggestion = () => {
   ];
 
   const handleSubmit = async () => {
-    const total = questions.length;
-    const answered = Object.keys(selectedAnswers).length;
+    // const total = questions.length;
+    // const answered = Object.keys(selectedAnswers).length;
 
     // if (answered < total) {
     //   messageApi.open({

@@ -1,5 +1,5 @@
 .find__school{
-    height: 600px;
+    min-height: 600px;
     background-image: url('../../img/tim_truong.jpg');
   background-repeat: no-repeat;
   object-fit: cover;
@@ -24,7 +24,7 @@
   /* phải có block để margin auto hoạt động */
   display: block; 
   width: 500px;
-  margin: 15px auto; /* căn giữa theo chiều ngang */
+  margin: 5px auto;
   background: linear-gradient(90deg, #FFEF78 0%, #FFCC02 100%);
   border: none;
   color: #ffff;                /* chữ màu xám đậm dễ đọc */

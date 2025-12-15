@@ -1,11 +1,12 @@
 .tbresult__container{
-margin-left: 70px;
+margin-left: 100px;
+min-width: 1300px;
 }
 .tbresult_school{
     width: 1300px;
 }
 .tbresult_school .ant-table-tbody > tr:hover > td {
-  background-color: rgba(134, 134, 134, 0.9) !important;
+  background-color: rgba(134, 134, 134, 1.5) !important;
   cursor: pointer;
 }
 
@@ -35,4 +36,8 @@ margin-left: 70px;
 
 .result_title {
   color: rgb(234, 179, 8);  
+}
+.ant-table-cell {
+  white-space: normal !important;
+  word-break: break-word;
 }

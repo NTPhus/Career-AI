@@ -47,7 +47,7 @@ const ResultSchool = (prop) => {
       title: "Tên trường",
       dataIndex: "schoolName",
       key: "schoolName",
-      render: (text, record, index) => {
+      render: (text, record) => {
         return (
           <div>
             <div
