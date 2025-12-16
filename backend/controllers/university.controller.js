@@ -44,8 +44,14 @@ export const searchUniversity = async (req, res) => {
 
     if (hasMajorParams) {
       if (majorName.length > 0) {
+        const newMajorName = [];
+        for(const majorString of majorName){
+          const name = majorString.split("-");
+          for(const item of name) newMajorName.push(item)
+        }
+        
         // 2. Join all names using the pipe (|) operator
-        const searchPattern = majorName.join("|");
+        const searchPattern = newMajorName.join("|");
 
         // 3. Create a single regex with the case-insensitive flag ('i')
         const caseInsensitiveRegex = new RegExp(searchPattern, "i");
@@ -71,7 +77,7 @@ export const searchUniversity = async (req, res) => {
     }
 
     const resultSearch = await university.find(query).select(projection).exec();
-  console.log(resultSearch); 
+    
     res.status(200).json(resultSearch);
   } catch (error) {
     console.error("Lỗi trong quá trình tìm kiếm:", error);
