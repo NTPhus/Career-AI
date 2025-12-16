@@ -1,7 +1,7 @@
 
 rf_env
 .env
-
+venv
 # Hardhat files
 /cache
 /artifacts

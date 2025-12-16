@@ -29,3 +29,7 @@ border-radius: 5px;
 .ant-modal-close-x:hover {
   color: #fff !important;      /* đổi sang trắng khi hover */
 }
+
+.ant-modal-container{
+  background-color: #1E1E1E !important;
+}

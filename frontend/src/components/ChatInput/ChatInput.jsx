@@ -1,6 +1,7 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ChatInput.css";
 import { useSearchParams } from "react-router-dom";
+import { SendOutlined } from '@ant-design/icons';
 
 function ChatInput({ onSend }) {
   const [message, setMessage] = useState("");
@@ -39,7 +40,9 @@ function ChatInput({ onSend }) {
           }
         }}
       />
-      <button onClick={handleSend}>Gửi</button>
+      <button onClick={handleSend}>
+        <SendOutlined style={{color:"white"}}/>
+      </button>
     </div>
   );
 }

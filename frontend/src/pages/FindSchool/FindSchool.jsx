@@ -95,7 +95,7 @@ const FindSchool = () => {
             layout="vertical"
             style={{
               background: "#ffff",
-              height: 500,
+              minHeight: 500,
               padding: 40,
               borderRadius: 15,
             }}

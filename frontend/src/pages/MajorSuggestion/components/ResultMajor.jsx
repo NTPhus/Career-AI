@@ -65,7 +65,9 @@ const ResultMajor = ({ prop, character }) => {
           header: { backgroundColor: "#1E1E1E", borderBottom: "none" },
           body: { backgroundColor: "#1E1E1E", color: "#ffff" },
           footer: { backgroundColor: "#1E1E1E", borderTop: "none" },
+          
         }}
+        style={{backgroundColor: "#1E1E1E"}}
       >
         <h2 style={{ marginTop: -5, color: "#EAB308" }}>{prop.major}</h2>
         {major.length > 0 ? (
