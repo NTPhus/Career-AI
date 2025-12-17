@@ -177,7 +177,7 @@ const MajorSuggestion = () => {
       gender: 2,
     };
 
-    const res = await predictMajor(test);
+    const res = await predictMajor(mapped);
 
     console.log(res);
 
