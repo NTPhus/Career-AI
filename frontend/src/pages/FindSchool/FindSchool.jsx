@@ -194,14 +194,14 @@ const FindSchool = () => {
 
       {/* Trả bảngg kết quả */}
       {check == true && (
-        <Row>
+        <Row style={{justifyContent:"center"}}>
           {universities.length > 0 ? (
             <>
               <ResultSchool prop={universities} />
             </>
           ) : (
             <>
-              <p style={{ color: "red" }}>Không tìm thấy trường phù hợp</p>
+              <p className="content_result">Không tìm thấy trường phù hợp</p>
             </>
           )}
         </Row>

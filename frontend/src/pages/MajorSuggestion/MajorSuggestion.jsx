@@ -66,17 +66,17 @@ const MajorSuggestion = () => {
   ];
 
   const handleSubmit = async () => {
-    // const total = questions.length;
-    // const answered = Object.keys(selectedAnswers).length;
+    const total = questions.length;
+    const answered = Object.keys(selectedAnswers).length;
 
-    // if (answered < total) {
-    //   messageApi.open({
-    //     type: "error",
-    //     content:
-    //       `Bạn còn ${total - answered} câu chưa trả lời!`,
-    //     duration: 5,
-    //   });
-    // }
+    if (answered < total) {
+      messageApi.open({
+        type: "error",
+        content:
+          `Bạn còn ${total - answered} câu chưa trả lời!`,
+        duration: 5,
+      });
+    }
 
     const labelToValueRIASEC = {
       "Hoàn toàn không đồng ý": 1,
@@ -114,70 +114,70 @@ const MajorSuggestion = () => {
       mapped[item.question] = item.answer;
     });
 
-    const test = {
-      R1: 3,
-      R2: 2,
-      R3: 2,
-      R4: 3,
-      R5: 3,
-      R6: 2,
-      R7: 3,
-      R8: 2,
-      I1: 3,
-      I2: 2,
-      I3: 2,
-      I4: 3,
-      I5: 2,
-      I6: 2,
-      I7: 2,
-      I8: 2,
-      A1: 2,
-      A2: 2,
-      A3: 3,
-      A4: 2,
-      A5: 2,
-      A6: 2,
-      A7: 2,
-      A8: 2,
-      S1: 4,
-      S2: 5,
-      S3: 5,
-      S4: 5,
-      S5: 5,
-      S6: 5,
-      S7: 5,
-      S8: 5,
-      E1: 4,
-      E2: 5,
-      E3: 5,
-      E4: 2,
-      E5: 5,
-      E6: 5,
-      E7: 5,
-      E8: 3,
-      C1: 3,
-      C2: 4,
-      C3: 5,
-      C4: 5,
-      C5: 3,
-      C6: 3,
-      C7: 5,
-      C8: 3,
-      TIPI1: 6,
-      TIPI2: 4,
-      TIPI3: 7,
-      TIPI4: 7,
-      TIPI5: 6,
-      TIPI6: 6,
-      TIPI7: 6,
-      TIPI8: 5,
-      TIPI9: 5,
-      TIPI10: 4,
-      urban: 3,
-      gender: 2,
-    };
+    // const test = {
+    //   R1: 3,
+    //   R2: 2,
+    //   R3: 2,
+    //   R4: 3,
+    //   R5: 3,
+    //   R6: 2,
+    //   R7: 3,
+    //   R8: 2,
+    //   I1: 3,
+    //   I2: 2,
+    //   I3: 2,
+    //   I4: 3,
+    //   I5: 2,
+    //   I6: 2,
+    //   I7: 2,
+    //   I8: 2,
+    //   A1: 2,
+    //   A2: 2,
+    //   A3: 3,
+    //   A4: 2,
+    //   A5: 2,
+    //   A6: 2,
+    //   A7: 2,
+    //   A8: 2,
+    //   S1: 4,
+    //   S2: 5,
+    //   S3: 5,
+    //   S4: 5,
+    //   S5: 5,
+    //   S6: 5,
+    //   S7: 5,
+    //   S8: 5,
+    //   E1: 4,
+    //   E2: 5,
+    //   E3: 5,
+    //   E4: 2,
+    //   E5: 5,
+    //   E6: 5,
+    //   E7: 5,
+    //   E8: 3,
+    //   C1: 3,
+    //   C2: 4,
+    //   C3: 5,
+    //   C4: 5,
+    //   C5: 3,
+    //   C6: 3,
+    //   C7: 5,
+    //   C8: 3,
+    //   TIPI1: 6,
+    //   TIPI2: 4,
+    //   TIPI3: 7,
+    //   TIPI4: 7,
+    //   TIPI5: 6,
+    //   TIPI6: 6,
+    //   TIPI7: 6,
+    //   TIPI8: 5,
+    //   TIPI9: 5,
+    //   TIPI10: 4,
+    //   urban: 3,
+    //   gender: 2,
+    // };
 
-    const res = await predictMajor(test);
+    const res = await predictMajor(mapped);
 
     console.log(res);
 
@@ -201,7 +201,7 @@ const MajorSuggestion = () => {
       setMajors(majorSession);
       setCharacter(character);
       setCheck(true);
-      console.log(majorSession);
+      // console.log(majorSession);
     }
   }, majorSession);
 
@@ -303,7 +303,7 @@ const MajorSuggestion = () => {
           <div style={{ marginLeft: 65 }}>
             <h2 style={{ color: "#EAB308" }}>Ngành nghề phù hợp</h2>
             <p style={{ color: "black" }}>
-              Sau khi phân tích hệ thống thấy bạn có nhiều tiềm năng...
+              Sau khi phân tích hệ thống thấy bạn có nhiều tiềm năng để thành công khi lựa chọn các ngành nghề dưới đây...
             </p>
           </div>
 

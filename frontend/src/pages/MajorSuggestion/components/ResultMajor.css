@@ -3,6 +3,7 @@
     background-color: #111827;
     color: #ffff;
     margin-left: 60px;
+    min-height: 170px;
     
 }
 .result__major--item .ant-card-head-title {
@@ -16,6 +17,7 @@
 
 .btn__major{
     background: #FFCC02;
+    float: right;
 }
 .ant-modal-close-x {
     padding: 10px 15px;
